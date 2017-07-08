@@ -69,6 +69,7 @@ module Fluent
       config_param :update_column, :string, :default => nil
       config_param :time_column, :string, :default => nil
       config_param :primary_key, :string, :default => nil
+      config_param :additional_condition, :string, :default => nil
 
       def configure(conf)
         super
@@ -124,6 +125,7 @@ module Fluent
         if last_record && last_update_value = last_record[@update_column]
           relation = relation.where("#{@update_column} > ?", last_update_value)
         end
+        relation = relation.where(@additional_condition) if @additional_condition
         relation = relation.order("#{@update_column} ASC")
         relation = relation.limit(limit) if limit > 0
 
