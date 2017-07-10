@@ -10,8 +10,8 @@ class SqlOutputTest < Test::Unit::TestCase
 
   CONFIG = %[
     host localhost
-    port 5432
-    adapter postgresql
+    port 3306
+    adapter mysql2
 
     database fluentd_test
     username fluentd
@@ -33,8 +33,8 @@ class SqlOutputTest < Test::Unit::TestCase
     d = create_driver
     expected = {
       host: "localhost",
-      port: 5432,
-      adapter: "postgresql",
+      port: 3306,
+      adapter: "mysql2",
       database: "fluentd_test",
       username: "fluentd",
       password: "fluentd",

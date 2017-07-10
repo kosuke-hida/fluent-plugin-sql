@@ -1,9 +1,9 @@
 require "active_record"
 ActiveRecord::Base.establish_connection(host: "localhost",
-                                        port: 5432,
+                                        port: 3306,
                                         username: "fluentd",
                                         password: "fluentd",
-                                        adapter: "postgresql",
+                                        adapter: "mysql2",
                                         database: "fluentd_test")
 ActiveRecord::Schema.define(version: 20160225030107) do
   create_table "logs", force: :cascade do |t|

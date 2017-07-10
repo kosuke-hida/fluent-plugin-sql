@@ -20,8 +20,8 @@ before_install:
   - gem install bundler
 
 before_script:
-  - psql -U postgres -c "CREATE ROLE fluentd WITH LOGIN ENCRYPTED PASSWORD 'fluentd';"
-  - psql -U postgres -c "CREATE DATABASE fluentd_test OWNER fluentd;"
+  - mysql -uroot -e "CREATE DATABASE fluentd_test"
+  - mysql -uroot -e "GRANT ALL PRIVILEGES ON fluentd_test.* TO 'fluentd'@'localhost'  IDENTIFIED BY 'fluentd';  FLUSH PRIVILEGES;"
 
 script: bundle exec rake test
 
